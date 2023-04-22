@@ -1,4 +1,13 @@
+/**
+* class name:
+* @author:
+* @version:
+* @date: 
+* description: 
+*/
 public class VirtualPet {
+    
+    //field
     private String name;
 
     private int age;
@@ -6,15 +15,22 @@ public class VirtualPet {
     private PetNeeds petNeeds;
 
     public VirtualPet(String name, int age) {
+        
         this.name = name;
         this.age = age;
+        
         this.petNeeds = new PetNeeds();
+        
     }
 
+    //add comments here about this method
+    //if you can, you can use Random object instead of using Math.random()
     private int getRandomNumber(int min, int max) {
         return (int) (Math.random() * (max - min + 1) + min);
     }
 
+    
+    //feed method
     public void feed() {
         int decreaseAmount = getRandomNumber(10, 20);
         petNeeds.decreaseHunger(decreaseAmount);
@@ -31,10 +47,19 @@ public class VirtualPet {
     }
 
     public boolean isSick() {
+    
         return petNeeds.getHunger() >= 100 || petNeeds.getThirst() >= 100;
+    
     }
-        public boolean isSad() {return petNeeds.getHappiness() <= 0;}
+    
+    public boolean isSad(){
 
+            return petNeeds.getHappiness() <= 0;
+    }
+
+    /**
+    * method: printStatus()
+    */
     public void printStatus() {
         System.out.println(name + "- Age: " + age);
         System.out.println("Hunger: " + petNeeds.getHunger() + "/100");
@@ -43,6 +68,8 @@ public class VirtualPet {
         System.out.println();
     }
 
+    
+    //getters
     public String getName() {
         return name;
     }
@@ -55,9 +82,10 @@ public class VirtualPet {
         return getPetNeeds();
     }
 
-    public interface PetActions {
-        void feed();
-        void drink();
-        void play();
-    }
+    //remove this. this interface must be created separately from this class. 
+//     public interface PetActions {
+//         void feed();
+//         void drink();
+//         void play();
+//     }
 }
